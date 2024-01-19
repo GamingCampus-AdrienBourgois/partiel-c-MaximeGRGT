@@ -15,7 +15,7 @@ float Solution2::GetBalance(const std::string& accountName)
 {
     std::ifstream file("BankAccount/" + accountName + ".txt");
     if (!file.is_open()) {
-        throw std::runtime_error("File not found");
+        throw std::runtime_error("Fichier non trouve");
     }
 
     float balance = 0.0f;
@@ -26,7 +26,7 @@ float Solution2::GetBalance(const std::string& accountName)
         float amount;
 
         if (!(iss >> operation >> amount)) {
-            throw std::invalid_argument("Invalid file format");
+            throw std::invalid_argument("Format invalide");
         }
 
         if (operation == "DEPOSIT") {
@@ -36,7 +36,7 @@ float Solution2::GetBalance(const std::string& accountName)
             balance -= amount;
         }
         else {
-            throw std::invalid_argument("Invalid operation");
+            throw std::invalid_argument("Operation invalide");
         }
     }
 
