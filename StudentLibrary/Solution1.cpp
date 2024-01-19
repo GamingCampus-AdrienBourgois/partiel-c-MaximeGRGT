@@ -26,7 +26,7 @@ float Solution1::ConvertTemperature(float _value, TemperatureUnits _from, Temper
 					result = _value * (9.f / 5.f) + 32.f;
 					break;
 				case TemperatureUnits::KELVIN:
-					result = _value + 273.f;
+					result = _value + 273.15f;
 					break;
 				default:
 					throw std::logic_error("invalide ca marche pas");
@@ -39,7 +39,7 @@ float Solution1::ConvertTemperature(float _value, TemperatureUnits _from, Temper
 					result = (_value - 32.f) * (5.f / 9.f);
 					break;
 				case TemperatureUnits::KELVIN:
-					result = (5.f / 9.f) * (_value - 32.f) + 273.f;
+					result = (5.f / 9.f) * (_value - 32.f) + 273.15f;
 					break;
 				default:
 					throw std::logic_error("invalide ca marche pas");
@@ -49,10 +49,10 @@ float Solution1::ConvertTemperature(float _value, TemperatureUnits _from, Temper
 		case TemperatureUnits::KELVIN:
 			switch (_to) {
 				case TemperatureUnits::CELSIUS:
-					result = _value - 273.f;
+					result = _value - 273.15f;
 					break;
 				case TemperatureUnits::FAHRENHEIT:
-					result = (9.f / 5.f) * (_value - 273.f) + 32.f;
+					result = (9.f / 5.f) * (_value - 273.15f) + 32.f;
 					break;
 				default:
 					throw std::logic_error("invalide ca marche pas");
@@ -64,8 +64,6 @@ float Solution1::ConvertTemperature(float _value, TemperatureUnits _from, Temper
 	}
 
 	Solution1::Rounding(result);
-	std::cout << "\n";
-	std::cout << result;
 
 	return result;
 }
