@@ -19,18 +19,29 @@ std::string Solution3::ToLowercase(const std::string& str)
     return result;
 }
 
+bool Solution3::CompareWordPairs(const WordPair& a, const WordPair& b)
+{
+    return a.lowercase < b.lowercase;
+}
+
 void Solution3::SortWords() {
     if (words.empty())
     {
         throw std::runtime_error("Vector is null or empty");
     }
-    std::transform(words.begin(), words.end(), words.begin(), ToLowercase);
-    std::sort(words.begin(), words.end());
 
-    std::cout << "Sorted words:" << std::endl;
+    std::vector<WordPair> wordPairs;
     for (const std::string& word : words)
     {
-        std::cout << word << std::endl;
+        wordPairs.push_back({ word, ToLowercase(word) });
+    }
+
+    std::sort(wordPairs.begin(), wordPairs.end(), CompareWordPairs);
+
+    words.clear();
+    for (const auto& entry : wordPairs)
+    {
+        words.push_back(entry.original);
     }
 }
 
